@@ -1,11 +1,15 @@
 <script setup lang="ts">
 
+const emit = defineEmits(['click'])
 
+const emitClick = () => {
+    emit('click')
+}
 </script>
 
 <template>
     <div class="arcade-button-container">
-        <button class="arcade-button"></button>
+        <button class="arcade-button" @click='emitClick'></button>
     </div>
 </template>
 
@@ -18,7 +22,7 @@
 }
 
 .arcade-button {
-    background-image: linear-gradient(to bottom right, #ff0000, #cc0000);
+    background-image: linear-gradient(to bottom right, var(--ligth-red), var(--dark-red));
     border: none;
     border-radius: 50%;
     width: 50px;

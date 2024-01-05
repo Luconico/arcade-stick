@@ -27,8 +27,6 @@ const handleMove = (event: MouseEvent | TouchEvent) => {
     const angle = isDragging.value ? calculateAngle(clientX) : 0;
     setAngle(angle);
 
-    handleEmits(angle);
-
     if (angle === 0) {
         window.removeEventListener('mousemove', handleMove);
         window.removeEventListener('touchmove', handleMove);
@@ -40,6 +38,7 @@ const setAngle = (angle: number) => {
 
     stickTop.value.style.transform = `translateY(57px) rotate(${angle}deg)`;
     stickCircle.value.style.transform = `rotate(${-angle}deg)`;
+    handleEmits(angle);
 };
 
 
@@ -135,7 +134,7 @@ onUnmounted(() => {
 .arcade-stick_bar {
     width: 15%;
     height: 100%;
-    background-color: #ccc;
+    background-image: linear-gradient(to right, #ccc, #5d5d5d);
     transform: translateY(10px);
     border-radius: 0% 0% 5px 5px;
     z-index: 1;
@@ -153,6 +152,6 @@ onUnmounted(() => {
     height: 80%;
     transform: rotateX(45deg);
     clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
-    background-image: linear-gradient(to bottom right, #ff0000, #cc0000);
+    background-image: linear-gradient(to bottom right, var(--ligth-red), var(--dark-red));
 }
 </style>
